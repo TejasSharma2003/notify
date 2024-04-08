@@ -183,7 +183,6 @@ const NewEditor = ({ article }: { article: Article }) => {
 
     React.useEffect(() => {
         if (isMounted) {
-            console.log("yeah initialize the editor");
             initializeEditor();
 
             return () => {
@@ -238,21 +237,31 @@ const NewEditor = ({ article }: { article: Article }) => {
         },
     }
     ).use(XHR, {
-        endpoint: "http://localhost:3000/api/upload-cover-image",
+        endpoint: "/api/upload-cover-image",
         formData: true,
         fieldName: "cover_image",
-        validateStatus: (status, responseText, response) => {
+        validateStatus: (status, responseText) => {
+            if (status == 413) {
+                toast({
+                    title: "Cover image upload",
+                    description: "The image too large max size allowed is 3MB",
+                    variant: "destructive"
+                })
+                return false;
+            }
             const res = JSON.parse(responseText);
             if (res?.status === 200) {
                 toast({
+                    title: "Cover image upload",
                     description: "File has been uploaded succesfully."
                 })
                 router.refresh();
                 return true;
             }
             toast({
+                title: "Cover image upload",
+                description: "Something went wrong. Can't upload the image.",
                 variant: "destructive",
-                description: "Something went wrong. Can't upload the image."
             })
             return false;
         }
@@ -339,7 +348,7 @@ const NewEditor = ({ article }: { article: Article }) => {
                                 {article.coverImage !== "" ? (
                                     <EditorUploadCoverImageItem
                                         articleId={article.id}
-                                        coverImage={article.coverImage}
+                                        coverImage={article.coverImage || ""}
                                     />
                                 ) : (
                                     <EditorUploadCoverImagePlaceHolder />

@@ -16,7 +16,7 @@ import { EmptyPlaceholder } from "../empty-placeholder";
 import BottomArticleBar from "./bottom-article-bar";
 
 export const SingleArticle = async ({ article }: { article: Article }) => {
-    // console.log(article.coverImage);
+    const imageUrl = `http://127.0.0.1/uploads/articles/${article.coverImage}`;
     return (
         <div className="font-sans border-b first:pt-0 pt-10 pb-10 last:border-none last:pb-0">
             <article className="">
@@ -32,11 +32,12 @@ export const SingleArticle = async ({ article }: { article: Article }) => {
                     </div>
                     <div className="overflow-hidden rounded ml-auto">
                         <Image
-                            src={article.coverImage ? createImageUrl(article.coverImage) : ""}
+                            src={imageUrl}
                             alt={article.coverImage || "cover"}
                             className="hover:scale-110 transition-transform w-[150px] h-[100px] sm:w-[256px] sm:h-[144px] object-cover duration-500"
                             width={256}
                             height={144}
+                            quality={95}
                             priority
                             placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(256, 144))}`}
                         />

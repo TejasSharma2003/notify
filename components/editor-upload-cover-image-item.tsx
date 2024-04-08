@@ -25,13 +25,13 @@ interface EditorUploadCoverImageItemProps {
     coverImage: string;
 }
 
-const EditorUploadCoverImageItem: FC<EditorUploadCoverImageItemProps> = ({
+const EditorUploadCoverImageItem: FC<EditorUploadCoverImageItemProps> = async ({
     coverImage,
     articleId
 }) => {
     const [isDeleteLoading, setIsDeleteLoading] = React.useState(false);
 
-    const imageUrl = `/articles/${coverImage}`;
+    const imageUrl = `http://127.0.0.1/uploads/articles/${coverImage}`;
     return (
         <div className="col-span-full max-w-2xl">
             <Image

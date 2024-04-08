@@ -59,6 +59,7 @@ export default async function PostPage({ params }: PostPageProps) {
         notFound()
     }
 
+    const imageUrl = `http://127.0.0.1/uploads/articles/${article.coverImage}`;
     return (
         <article className="container relative max-w-3xl">
             <BackButton className="absolute left-[-200px] top-0 hidden xl:inline-flex " />
@@ -72,7 +73,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 </h1>
             </div>
             <Image
-                src={article.coverImage ? createImageUrl(article.coverImage) : ""}
+                src={imageUrl}
                 alt={article.title}
                 width={720}
                 height={405}

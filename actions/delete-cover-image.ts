@@ -14,7 +14,7 @@ type deleteCoverImageProps = {
 
 export default async function deleteCoverImage({ articleId, coverImage }: deleteCoverImageProps) {
     try {
-        const imagePath = path.join(process.cwd(), `public/articles/${coverImage}`);
+        const imagePath = path.join(process.cwd(), `uploads/articles/${coverImage}`);
         fs.access(imagePath, err => {
             if (err) {
                 return {

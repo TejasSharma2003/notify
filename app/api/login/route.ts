@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
             userName: user.userName,
         }).setProtectedHeader({ alg: 'HS256' })
             .setIssuedAt()
-            .setExpirationTime('2h') // TODO: make this time a bit better IDK
+            .setExpirationTime('8h') // TODO: make this time a bit better IDK
             .sign(getJwtSecretKey());
 
         const response = NextResponse.json({
