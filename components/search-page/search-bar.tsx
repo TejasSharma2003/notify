@@ -20,6 +20,7 @@ export default function SearchBar() {
         replace(`${pathname}?${params.toString()}`);
     }, 300)
 
+
     return (
         <div className="container flex items-center relative border-b">
             <Icons.search className="absolute left-0 w-5 h-5 text-muted-foreground ml-2" />

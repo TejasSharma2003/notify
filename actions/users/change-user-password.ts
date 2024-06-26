@@ -1,11 +1,14 @@
 "use server"
+
+import { eq } from "drizzle-orm"
+
 import { db } from "@/db"
 import { users } from "@/db/schema"
-import { eq } from "drizzle-orm"
+
 import { userAccountFormSchema } from "@/lib/validations/user-account-form"
-import { hashUserPassword, verifyUserPassword } from "@/lib/server/auth"
+import { hashUserPassword, verifyUserPassword } from "@/lib/server/hash"
+
 import { ZodError, z } from "zod"
-import { hash } from "bcrypt"
 
 type ChangeUserPasswordProps = z.infer<typeof userAccountFormSchema>
 

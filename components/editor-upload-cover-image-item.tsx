@@ -31,7 +31,8 @@ const EditorUploadCoverImageItem: FC<EditorUploadCoverImageItemProps> = async ({
 }) => {
     const [isDeleteLoading, setIsDeleteLoading] = React.useState(false);
 
-    const imageUrl = `http://127.0.0.1/uploads/articles/${coverImage}`;
+    // const imageUrl = `http://127.0.0.1/uploads/articles/${coverImage}`;
+    const imageUrl = `/articles/${coverImage}`;
     return (
         <div className="col-span-full max-w-2xl">
             <Image

@@ -27,7 +27,8 @@ export async function POST(req: Request) {
             .toBuffer()
         const writeFileAsync = promisify(fs.writeFile);
         const imageName = `${articleId}-${new Date().toISOString()}.jpg`
-        await writeFileAsync(path.join(process.cwd(), "/uploads/articles/" + imageName), editedImageBuffer);
+        // await writeFileAsync(path.join(process.cwd(), "/uploads/articles/" + imageName), editedImageBuffer);
+        await writeFileAsync(path.join(process.cwd(), "/public/articles/" + imageName), editedImageBuffer);
 
         // update the coverImage name of the article
         await db.update(articles)

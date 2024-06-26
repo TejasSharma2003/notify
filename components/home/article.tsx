@@ -16,7 +16,8 @@ import { EmptyPlaceholder } from "../empty-placeholder";
 import BottomArticleBar from "./bottom-article-bar";
 
 export const SingleArticle = async ({ article }: { article: Article }) => {
-    const imageUrl = `http://127.0.0.1/uploads/articles/${article.coverImage}`;
+    // const imageUrl = `http://127.0.0.1/uploads/articles/${article.coverImage}`;
+    const imageUrl = `/articles/${article.coverImage}`;
     return (
         <div className="font-sans border-b first:pt-0 pt-10 pb-10 last:border-none last:pb-0">
             <article className="">
